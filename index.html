@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio — Cinematic Scroll-Driven Website</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+      :root {
+        --bg: #f3f4f6;
+        --text: #091633;
+        --muted: #5b6678;
+        --stroke: #e4e7ec;
+        --accent-a: #ff922f;
+        --accent-b: #f03aa5;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .container { width: min(1460px, 92vw); margin: 0 auto; }
+
+      .top-nav {
+        margin-top: 34px;
+        height: 104px;
+        border: 1px solid var(--stroke);
+        border-radius: 52px;
+        background: rgba(255,255,255,.36);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+      }
+      .brand { display:flex; align-items:center; gap:18px; font-weight:800; font-size:42px; }
+      .brand-dot {
+        width:58px; height:58px; border-radius:50%; display:grid; place-items:center;
+        color:white; font-weight:800; font-size:34px;
+        background: linear-gradient(135deg, #ff9330, #f03aa5);
+        box-shadow: 0 10px 28px rgba(240,58,165,.35);
+      }
+      .nav-links { display:flex; gap:56px; font-size:38px; font-weight:600; color:#6b7280; }
+      .nav-links a { text-decoration:none; color:inherit; position:relative; }
+      .nav-links a.active { color:#0f172a; }
+      .nav-links a.active::after {
+        content:""; position:absolute; left:0; right:0; bottom:-16px; margin:auto;
+        width:100%; height:5px; border-radius:4px;
+        background: linear-gradient(90deg, var(--accent-a), #ff6f61);
+      }
+      .cta {
+        border:none; color:#fff; font-size:38px; font-weight:700; padding:22px 42px;
+        border-radius:999px; cursor:pointer;
+        background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+      }
+
+      .hero { padding: 86px 0 40px; position: relative; }
+      .chip {
+        display:inline-flex; align-items:center; gap:14px;
+        border:1px solid #d7dae0; border-radius:999px; padding:16px 28px;
+        letter-spacing:.18em; font-weight:600; color:#475467; font-size:34px;
+      }
+      h1 {
+        margin: 56px 0 0; font-size: clamp(70px, 10.2vw, 220px); line-height:.95;
+        letter-spacing:-0.03em; font-weight:800;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+        -webkit-background-clip:text; background-clip:text; color:transparent;
+      }
+      .sub {
+        margin-top: 48px; max-width: 1150px; font-size: 56px; line-height:1.45; color:#4b5565;
+      }
+      .actions { margin-top: 58px; display:flex; gap:24px; }
+      .btn {
+        border-radius:999px; padding:24px 48px; font-size:48px; font-weight:700; text-decoration:none;
+        display:inline-flex; align-items:center; gap:16px;
+      }
+      .btn.primary { background:#071636; color:#fff; }
+      .btn.secondary { border:2px solid #c9ced8; color:#354052; }
+
+      .glow {
+        position:absolute; left:30%; top:24%; width:700px; height:700px; border-radius:50%;
+        background: radial-gradient(circle, rgba(255,170,120,.25), rgba(240,58,165,.14), transparent 70%);
+        filter: blur(18px); pointer-events:none;
+      }
+
+      @media (max-width: 1100px) {
+        .top-nav { height:auto; border-radius:24px; padding:20px; gap:14px; flex-wrap:wrap; }
+        .brand { font-size:28px; }
+        .brand-dot { width:44px; height:44px; font-size:24px; }
+        .nav-links { gap:20px; font-size:20px; order:3; width:100%; justify-content:center; }
+        .cta { font-size:20px; padding:14px 20px; }
+        .chip { font-size:14px; }
+        h1 { font-size: clamp(42px, 12vw, 84px); }
+        .sub { font-size: 22px; max-width: 680px; }
+        .btn { font-size:22px; padding:16px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container top-nav">
+      <div class="brand">
+        <span class="brand-dot">S</span>
+        <span>STUDIO</span>
+      </div>
+      <nav class="nav-links" aria-label="Main menu">
+        <a href="#" class="active">Ana Sayfa</a>
+        <a href="#">Hakkımızda</a>
+        <a href="#">Hizmetler</a>
+        <a href="#">Projeler</a>
+        <a href="#">İletişim</a>
+      </nav>
+      <button class="cta">Görüşelim →</button>
+    </header>
+
+    <main class="container hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="chip">DESIGN × DEVELOPMENT × INNOVATION</div>
+      <h1>
+        We craft digital<br />
+        experiences that<br />
+        move <span class="gradient-text">people</span>
+      </h1>
+      <p class="sub">
+        A digital studio where strategy meets craft. We build brands and experiences
+        that resonate, perform, and endure.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#">View Our Work →</a>
+        <a class="btn secondary" href="#">Get in Touch →</a>
+      </div>
+    </main>
+  </body>
+</html>
