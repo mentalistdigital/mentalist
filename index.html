@@ -1,164 +1,139 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cinematic Scroll Driven Website</title>
-    <meta
-      name="description"
-      content="Premium görünümlü, cam efekti kullanan modern tek sayfa HTML site."/>
+    <title>Studio — Cinematic Scroll-Driven Website</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
       :root {
-        --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-        --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-        --bg-1: #09090b;
-        --bg-2: #111827;
-        --text: #f8fafc;
-        --muted: #cbd5e1;
-        --accent: #7c3aed;
+        --bg: #f3f4f6;
+        --text: #091633;
+        --muted: #5b6678;
+        --stroke: #e4e7ec;
+        --accent-a: #ff922f;
+        --accent-b: #f03aa5;
       }
 
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        font-family: var(--font-body);
+        background: var(--bg);
         color: var(--text);
-        background:
-          radial-gradient(1200px 700px at 20% -10%, #312e81 0%, transparent 70%),
-          radial-gradient(1200px 700px at 90% 10%, #0f766e 0%, transparent 60%),
-          linear-gradient(180deg, var(--bg-2), var(--bg-1));
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       }
 
-      .container { width: min(1100px, 92vw); margin: 0 auto; }
-      .hero {
-        min-height: 100vh;
-        display: grid;
-        align-content: center;
-        gap: 1.25rem;
-        padding: 4rem 0;
+      .container { width: min(1460px, 92vw); margin: 0 auto; }
+
+      .top-nav {
+        margin-top: 34px;
+        height: 104px;
+        border: 1px solid var(--stroke);
+        border-radius: 52px;
+        background: rgba(255,255,255,.36);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
       }
-      .eyebrow {
-        letter-spacing: .14em;
-        text-transform: uppercase;
-        color: var(--muted);
-        font-size: .78rem;
+      .brand { display:flex; align-items:center; gap:18px; font-weight:800; font-size:42px; }
+      .brand-dot {
+        width:58px; height:58px; border-radius:50%; display:grid; place-items:center;
+        color:white; font-weight:800; font-size:34px;
+        background: linear-gradient(135deg, #ff9330, #f03aa5);
+        box-shadow: 0 10px 28px rgba(240,58,165,.35);
+      }
+      .nav-links { display:flex; gap:56px; font-size:38px; font-weight:600; color:#6b7280; }
+      .nav-links a { text-decoration:none; color:inherit; position:relative; }
+      .nav-links a.active { color:#0f172a; }
+      .nav-links a.active::after {
+        content:""; position:absolute; left:0; right:0; bottom:-16px; margin:auto;
+        width:100%; height:5px; border-radius:4px;
+        background: linear-gradient(90deg, var(--accent-a), #ff6f61);
+      }
+      .cta {
+        border:none; color:#fff; font-size:38px; font-weight:700; padding:22px 42px;
+        border-radius:999px; cursor:pointer;
+        background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+      }
+
+      .hero { padding: 86px 0 40px; position: relative; }
+      .chip {
+        display:inline-flex; align-items:center; gap:14px;
+        border:1px solid #d7dae0; border-radius:999px; padding:16px 28px;
+        letter-spacing:.18em; font-weight:600; color:#475467; font-size:34px;
       }
       h1 {
-        margin: 0;
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 5.3vw, 5rem);
-        line-height: 1.03;
+        margin: 56px 0 0; font-size: clamp(70px, 10.2vw, 220px); line-height:.95;
+        letter-spacing:-0.03em; font-weight:800;
       }
-      .lead {
-        max-width: 62ch;
-        color: var(--muted);
-        font-size: clamp(1rem, 1.6vw, 1.15rem);
-        line-height: 1.7;
+      .gradient-text {
+        background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+        -webkit-background-clip:text; background-clip:text; color:transparent;
+      }
+      .sub {
+        margin-top: 48px; max-width: 1150px; font-size: 56px; line-height:1.45; color:#4b5565;
+      }
+      .actions { margin-top: 58px; display:flex; gap:24px; }
+      .btn {
+        border-radius:999px; padding:24px 48px; font-size:48px; font-weight:700; text-decoration:none;
+        display:inline-flex; align-items:center; gap:16px;
+      }
+      .btn.primary { background:#071636; color:#fff; }
+      .btn.secondary { border:2px solid #c9ced8; color:#354052; }
+
+      .glow {
+        position:absolute; left:30%; top:24%; width:700px; height:700px; border-radius:50%;
+        background: radial-gradient(circle, rgba(255,170,120,.25), rgba(240,58,165,.14), transparent 70%);
+        filter: blur(18px); pointer-events:none;
       }
 
-      .row { display: flex; gap: .8rem; flex-wrap: wrap; }
-
-      .glass-button {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
-        border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        color: #fff;
-        padding: .82rem 1.2rem;
-        text-decoration: none;
-        font-weight: 700;
-        display: inline-flex;
+      @media (max-width: 1100px) {
+        .top-nav { height:auto; border-radius:24px; padding:20px; gap:14px; flex-wrap:wrap; }
+        .brand { font-size:28px; }
+        .brand-dot { width:44px; height:44px; font-size:24px; }
+        .nav-links { gap:20px; font-size:20px; order:3; width:100%; justify-content:center; }
+        .cta { font-size:20px; padding:14px 20px; }
+        .chip { font-size:14px; }
+        h1 { font-size: clamp(42px, 12vw, 84px); }
+        .sub { font-size: 22px; max-width: 680px; }
+        .btn { font-size:22px; padding:16px 24px; }
       }
-      .glass-button::before {
-        content: '';
-        position: absolute; inset: 0 0 auto 0; height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
-      }
-      .glass-button::after {
-        content: '';
-        position: absolute; top: 0; left: 0; width: 1px; height: 100%;
-        background: linear-gradient(180deg, rgba(255,255,255,.8), transparent, rgba(255,255,255,.3));
-      }
-      .glass-button:hover {
-        background: rgba(255, 255, 255, 0.25);
-        border-color: rgba(255, 255, 255, 0.5);
-        box-shadow: 0 12px 40px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.6), inset 0 -1px 0 rgba(255,255,255,.2);
-        transform: scale(1.05);
-      }
-      .glass-button:active { transform: scale(.98); }
-
-      .glass-button-dark {
-        background: rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
-        border-radius: 9999px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: 0 8px 32px rgba(0,0,0,.1), inset 0 1px 0 rgba(255,255,255,.1), inset 0 -1px 0 rgba(0,0,0,.1);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        color: #fff;
-        padding: .82rem 1.2rem;
-        text-decoration: none;
-        font-weight: 700;
-      }
-      .glass-button-dark:hover {
-        background: rgba(0, 0, 0, 0.25);
-        border-color: rgba(0, 0, 0, 0.3);
-        box-shadow: 0 12px 40px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.15), inset 0 -1px 0 rgba(0,0,0,.2);
-        transform: scale(1.05);
-      }
-      .glass-button-dark:active { transform: scale(.98); }
-
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1rem;
-        margin: 2rem 0 4rem;
-      }
-      .card {
-        background: rgba(255,255,255,.08);
-        border: 1px solid rgba(255,255,255,.18);
-        border-radius: 20px;
-        padding: 1rem;
-      }
-      .card h3 { margin-top: .2rem; font-family: var(--font-display); }
-      .card p { color: var(--muted); line-height: 1.6; margin-bottom: .2rem; }
     </style>
   </head>
   <body>
-    <main class="container hero">
-      <p class="eyebrow">Cinematic Scroll Driven Website</p>
-      <h1>Modern, Premium ve Hızlı<br/>Tek Sayfa HTML Çözümü</h1>
-      <p class="lead">
-        İstediğin yönde başladım: doğrudan çalışır bir HTML site. Cam efektli butonlar,
-        premium tipografi (Space Grotesk + Manrope) ve responsive kart düzeni ile temel
-        bir başlangıç iskeleti hazır.
-      </p>
-      <div class="row">
-        <a href="#" class="glass-button">Projeyi İncele</a>
-        <a href="#" class="glass-button-dark">Demo Başlat</a>
+    <header class="container top-nav">
+      <div class="brand">
+        <span class="brand-dot">S</span>
+        <span>STUDIO</span>
       </div>
+      <nav class="nav-links" aria-label="Main menu">
+        <a href="#" class="active">Ana Sayfa</a>
+        <a href="#">Hakkımızda</a>
+        <a href="#">Hizmetler</a>
+        <a href="#">Projeler</a>
+        <a href="#">İletişim</a>
+      </nav>
+      <button class="cta">Görüşelim →</button>
+    </header>
 
-      <section class="cards" aria-label="özellikler">
-        <article class="card">
-          <h3>Responsive Grid</h3>
-          <p>Tüm bölümler mobil ve masaüstü için otomatik uyumlu.</p>
-        </article>
-        <article class="card">
-          <h3>Glassmorphism</h3>
-          <p>Yumuşak blur, katmanlı gölge ve premium CTA görünümü.</p>
-        </article>
-        <article class="card">
-          <h3>Typography</h3>
-          <p>Display için Space Grotesk, body için Manrope kullanıldı.</p>
-        </article>
-      </section>
+    <main class="container hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="chip">DESIGN × DEVELOPMENT × INNOVATION</div>
+      <h1>
+        We craft digital<br />
+        experiences that<br />
+        move <span class="gradient-text">people</span>
+      </h1>
+      <p class="sub">
+        A digital studio where strategy meets craft. We build brands and experiences
+        that resonate, perform, and endure.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#">View Our Work →</a>
+        <a class="btn secondary" href="#">Get in Touch →</a>
+      </div>
     </main>
   </body>
 </html>
